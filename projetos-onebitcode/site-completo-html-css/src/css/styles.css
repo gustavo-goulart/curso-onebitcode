@@ -1,0 +1,40 @@
+body {
+  background-color: var(--color-background);
+  color: var(--color-white);
+}
+
+a {
+  color: var(--color-blue);
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), var(--color-background));
+  position: relative;
+  min-height: 100vh;
+}
+
+.hero__background {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover; /*forma de como um objeto se encaixa na tela */
+  position: absolute;
+  top: 0;
+  z-index: -10; /*controla a profundidade de um elemento */
+}
+
+.hero__foreground {
+  color: var(--color-white);
+  padding-top: 40vh;
+  text-align: center;
+}
+
+.hero__title {
+  font-size: 5rem;
+  font-weight: 300;
+}
+
+.hero__text {
+  margin-top: 2rem;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+}
