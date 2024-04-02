@@ -1,11 +1,11 @@
-let nomeUsuario = prompt("Digite seu nome: ");
-let sobrenomeUsuario = prompt("Digite seu sobrenome: ");
-let estudo = prompt("Digite sua formação: ");
-let anoNascimento = parseInt(prompt("Digite seu ano de nascimento: "));
+const nomeUsuario = prompt("Digite seu nome: ");
+const sobrenomeUsuario = prompt("Digite seu sobrenome: ");
+const estudo = prompt("Digite sua formação: ");
+const anoNascimento = parseInt(prompt("Digite seu ano de nascimento: "));
 
 anoAtual = 2024;
 
-let idadeAnos = anoAtual - anoNascimento;
+const idadeAnos = anoAtual - anoNascimento;
 
 alert(
   `Seu nome completo é ${
