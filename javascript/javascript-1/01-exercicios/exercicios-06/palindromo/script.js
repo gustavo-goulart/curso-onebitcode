@@ -1,31 +1,18 @@
 /*
-Escreva um programa em javascript que comece perguntando pela quantidade inicial de dinheiro disponível e então mostre na tela essa quantidade juntamente com as opções de adicionar e remover dinheiro e uma opção de sair. Ao clicar na opção de adicionar dinheiro o programa deve perguntar pela quantidade a ser adicionada, somar esse valor com a quantidade inicial e então mostrar novamente o menu com a quantidade de dinheiro e as opções. A opção de remover dinheiro deve fazer o mesmo, porém subtraindo o valor. A opção de sair deve encerrar o programa.
+Escreva um programa em javascript que seja capaz de identificar se uma palavra é um palíndromo. Um palíndromo é uma palavra que lida de trás para frente possui as mesmas letras na mesma ordem. O programa deve iniciar pedindo que seja informada uma palavra e então deve exibir uma mensagem dizendo se aquela palavra é ou não um palíndromo. Caso não seja um palíndromo, o programa deve mostrar a palavra lida da esquerda para direita e da direita para esquerda.
 */
 
-let saldo = parseFloat(prompt("Informe a quantidade de dinheiro inicial:"));
-let opcao = "";
+const palavra = prompt("Informe uma palavra:");
+let palavraInvertida = "";
 
-do {
-  opcao = prompt(
-    "Saldo disponível: R$ " +
-      saldo +
-      "\n1 - Adicionar dinheiro" +
-      "\n2 - Remover dinheiro" +
-      "\n3 - Sair"
+for (let i = palavra.length - 1; i >= 0; i--) {
+  palavraInvertida += palavra[i];
+}
+
+if (palavra === palavraInvertida) {
+  alert(palavra + " é um palíndromo!");
+} else {
+  alert(
+    palavra + " não é um palíndromo!\n\n" + palavra + " !== " + palavraInvertida
   );
-
-  switch (opcao) {
-    case "1":
-      saldo += parseFloat(prompt("Informe o valor a ser adicionado:"));
-      break;
-    case "2":
-      saldo -= prompt("Informe o valor a ser removido:");
-      break;
-    case "3":
-      alert("Saindo...");
-      break;
-    default:
-      alert("Entrada inválida.");
-      break;
-  }
-} while (opcao !== "3");
+}
