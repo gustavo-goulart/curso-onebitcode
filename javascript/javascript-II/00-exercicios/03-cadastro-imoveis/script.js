@@ -12,28 +12,59 @@ Escreva um programa em javascript que funcione como um cadastro de imóveis e at
 9. O menu também deve ter a opção de mostrar todos os imóveis salvos.
 */
 
-const baralho = [];
+const imoveis = [];
 let opcao = "";
 
 do {
   opcao = prompt(
-    "Cartas no baralho: " +
-      baralho.length +
-      "\n1. Adicionar uma carta\n2. Puxar uma carta\n3. Sair"
+    "Bem vindo ao cadastro de imóveis\n" +
+      "Total de imóveis: " +
+      imoveis.length +
+      "\n\nEscolha uma opção:\n1. Novo imóvel\n2. Listar imóveis\n3. Sair"
   );
 
   switch (opcao) {
     case "1":
-      const novaCarta = prompt("Qual é a carta?");
-      baralho.push(novaCarta);
+      const imovel = {};
+
+      imovel.proprietario = prompt("Informe o nome do proprietário do imóvel:");
+      imovel.quartos = parseFloat(prompt("Quantos quartos possui o imóvel?"));
+      imovel.banheiros = parseFloat(
+        prompt("Quantos banheiros possui o imóvel?")
+      );
+      imovel.garagem = prompt("O imóvel possui garagem? (Sim/Não)");
+
+      const confirma = confirm(
+        "Salvar este imóvel?\n" +
+          "\nProprietário: " +
+          imovel.proprietario +
+          "\nQuartos: " +
+          imovel.quartos +
+          "\nBanheiros: " +
+          imovel.banheiros +
+          "\nPossui Garagem? " +
+          imovel.garagem
+      );
+
+      if (confirma) {
+        imoveis.push(imovel);
+      }
       break;
 
     case "2":
-      const cartaPuxada = baralho.pop();
-      if (!cartaPuxada) {
-        alert("Não há nenhuma carta no baralho");
-      } else {
-        alert("Você puxou um(a) " + cartaPuxada);
+      for (let i = 0; i < imoveis.length; i++) {
+        alert(
+          "Imóvel " +
+            (i + 1) +
+            "\nProprietário: " +
+            imoveis[i].proprietario +
+            "\nQuartos: " +
+            imoveis[i].quartos +
+            "\nBanheiros: " +
+            imoveis[i].banheiros +
+            "\nPossui Garagem? " +
+            imoveis[i].garagem
+        );
       }
       break;
 
