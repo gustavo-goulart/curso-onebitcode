@@ -1,57 +1,35 @@
-function addClimbed() {
-  const climbedSection = document.getElementById("players-list");
-  console.log(climbedSection);
+function addPlayer() {
+  const position = document.getElementById("position").value;
+  const name = document.getElementById("name").value;
+  const number = document.getElementById("number").value;
 
-  const h3 = document.createElement("h3");
-  h3.innerText = "Jogador";
+  const confirmation = confirm(`Escalar ${name} como ${position} ?`);
 
-  const ul = document.createElement("ul");
+  if (confirmation) {
+    const teamList = document.getElementById("team-list");
+    const playerItem = document.createElement("li");
+    playerItem.id = "player- " + number;
+    playerItem.innerText = position + " : " + name + " (" + number + ")";
+    teamList.appendChild(playerItem);
 
-  const nameLi = document.createElement("li");
-  nameLi.innerText = "Nome: ";
-  const nameInput = document.createElement("input");
-  nameInput.type = "text";
-  nameInput.name = "fullname";
-  nameLi.appendChild(nameInput);
-  ul.appendChild(nameLi);
-  ul.appendChild(document.createElement("br"));
-
-  const positionLi = document.createElement("li");
-  positionLi.innerText = "Posição Jogador: ";
-  const positionInput = document.createElement("input");
-  nameInput.type = "text";
-  nameInput.name = "position";
-  positionLi.appendChild(positionInput);
-  ul.appendChild(positionLi);
-  ul.appendChild(document.createElement("br"));
-
-  const numberLi = document.createElement("li");
-  numberLi.innerText = "Nº Jogador: ";
-  const numberInput = document.createElement("input");
-  nameInput.type = "number";
-  nameInput.name = "number-player";
-  numberLi.appendChild(numberInput);
-  ul.appendChild(numberLi);
-  ul.appendChild(document.createElement("br"));
-
-  const button = document.createElement("button");
-  button.innerText = "Escalar";
-  const addButton = document.createElement("button");
-  button.type = "submit";
-  button.appendChild(addButton);
-  ul.appendChild(button);
-  ul.appendChild(document.createElement("br"));
-
-  climbedSection.append(h3, ul);
+    //reset campos formulário
+    document.getElementById("position").value = "";
+    document.getElementById("name").value = "";
+    document.getElementById("number").value = "";
+  }
 }
 
-//excluindo o último elemento da lista
-function removeContact() {
-  const contactSection = document.getElementById("contacts-list");
+function removePlayer() {
+  const number = document.getElementById("numberToRemove").value;
+  const playerToRemove = document.getElementById("player- " + number);
 
-  const titles = document.getElementsByTagName("h3");
-  const contacts = document.getElementsByTagName("ul");
+  const confirmation = confirm(
+    "Remover o jogador " + playerToRemove.innerText + "?"
+  );
 
-  contactSection.removeChild(titles[titles.length - 1]);
-  contactSection.removeChild(contacts[contacts.length - 1]);
+  if (confirmation) {
+    // document.getElementById("team-list").removeChild(playerToRemove);
+    playerToRemove.remove();
+    document.getElementById("numberToRemove").value = "";
+  }
 }
